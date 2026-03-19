@@ -217,7 +217,7 @@ const BlogsTimeline = () => {
             {filteredItems.map((item, index) => (
               <article
                 key={item.id}
-                className={`${styles.card} ${index === 0 ? styles.cardActive : ''} flex min-h-95 flex-col overflow-hidden transition hover:-translate-y-0.5`}
+                className={`${styles.card} ${index === 0 ? styles.cardActive : ''} flex min-h-[260px] flex-col overflow-hidden transition hover:-translate-y-0.5`}
               >
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
                   <span className={`${styles.cardNumber} bounded-font text-6xl leading-none`}>{item.id}</span>
@@ -232,7 +232,7 @@ const BlogsTimeline = () => {
                   </div>
                 </div>
 
-                <img src={item.image} alt={item.title} className={`${styles.cardImage} h-126 w-full object-cover`} loading="lazy" />
+                <img src={item.image} alt={item.title} className={`${styles.cardImage} h-[220px] w-full object-cover`} loading="lazy" />
               </article>
             ))}
           </div>
