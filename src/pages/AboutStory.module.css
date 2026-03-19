@@ -1,0 +1,19 @@
+.hero {
+  background:
+    radial-gradient(circle at 16% 10%, rgba(208, 210, 214, 0.12) 0%, transparent 34%),
+    radial-gradient(circle at 84% 88%, rgba(154, 158, 165, 0.12) 0%, transparent 40%),
+    linear-gradient(160deg, #020203 0%, #0a0b0d 48%, #15161a 100%);
+}
+
+.topMeta {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.13em;
+}
+
+.storyTitle {
+  text-wrap: balance;
+}
+
+.storyCopy {
+  max-width: 360px;
+}

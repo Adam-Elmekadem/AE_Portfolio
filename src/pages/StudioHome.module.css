@@ -1,0 +1,30 @@
+.topMeta {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.13em;
+  font-size: clamp(0.56rem, 0.72vw, 0.7rem);
+}
+
+.techPanel {
+  background: #050608;
+}
+
+.techLead {
+  color: rgba(240, 242, 246, 0.92);
+}
+
+.techGrid {
+  max-height: 290px;
+  overflow: hidden;
+}
+
+.techTag {
+  border: 1px solid rgba(227, 231, 238, 0.78);
+  color: rgba(239, 242, 247, 0.93);
+  background: transparent;
+}
+
+.techTagFilled {
+  border: 1px solid #eff2f7;
+  color: #11151b;
+  background: #eff2f7;
+}

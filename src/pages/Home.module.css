@@ -1,0 +1,35 @@
+.heroBackground {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(240, 138, 76, 0.15) 0%, transparent 28%),
+    radial-gradient(circle at 12% 86%, rgba(240, 138, 76, 0.12) 0%, transparent 30%),
+    linear-gradient(150deg, #131114 0%, #1b171b 100%);
+}
+
+.gridOverlay {
+  background-image:
+    linear-gradient(90deg, transparent 0, transparent calc(10% - 1px), rgba(32, 32, 32, 0.377) calc(10% - 1px), rgba(32, 32, 32, 0.377) 10%),
+    linear-gradient(rgba(255, 40, 76, 0.32), rgba(255, 40, 76, 0.32));
+  background-size: 10% 100%, 100% 1px;
+  background-position: 0 0, 0 calc(50% + min(16vw, 120px));
+  background-repeat: repeat, no-repeat;
+}
+
+.metaText {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(0.56rem, 0.72vw, 0.7rem);
+  letter-spacing: 0.14em;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 9.4vw, 8.9rem);
+  letter-spacing: 0.02em;
+}
+
+.brandMark {
+  font-size: clamp(0.65rem, 0.9vw, 0.82rem);
+}
+
+.summaryCardImage {
+  filter: none;
+  transform: none;
+}

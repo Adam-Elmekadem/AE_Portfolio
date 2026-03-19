@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'bounded regular', sans-serif;
+    color: #ece6e9;
+  }
+
+  .bounded-font {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+  }
+
+  .topMeta {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.13em;
+    font-size: clamp(0.56rem, 0.72vw, 0.7rem);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    @apply overflow-y-auto;
+  }
+}

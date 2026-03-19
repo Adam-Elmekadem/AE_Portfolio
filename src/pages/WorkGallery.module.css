@@ -1,0 +1,10 @@
+.galleryBackground {
+  background:
+    radial-gradient(circle at 16% 10%, rgba(208, 210, 214, 0.12) 0%, transparent 34%),
+    radial-gradient(circle at 84% 88%, rgba(154, 158, 165, 0.12) 0%, transparent 40%),
+    linear-gradient(160deg, #020203 0%, #0a0b0d 48%, #15161a 100%);
+}
+
+.imageOverlay {
+  background: linear-gradient(180deg, rgba(2, 2, 2, 0.12), rgba(2, 2, 2, 0.56));
+}

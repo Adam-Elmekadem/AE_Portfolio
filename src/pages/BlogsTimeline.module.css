@@ -1,0 +1,54 @@
+.pageBackground {
+  background: #e9eae7;
+}
+
+.topNotice {
+  background: #090909;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.brandMark {
+  color: #cf2b2b;
+}
+
+.monoText {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.monthChevron {
+  transform: translateY(-1px);
+}
+
+.modeSwitch {
+  background: #131313;
+}
+
+.switchThumb {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+}
+
+.selectMenu {
+  backdrop-filter: blur(4px);
+}
+
+.cardsGrid {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.card {
+  background: #efefec;
+  border: 1px solid #d9dad6;
+}
+
+.cardActive {
+  background: #101010;
+  color: #f2f2f1;
+}
+
+.cardNumber {
+  letter-spacing: -0.02em;
+}
+
+.cardImage {
+  filter: grayscale(100%);
+}
