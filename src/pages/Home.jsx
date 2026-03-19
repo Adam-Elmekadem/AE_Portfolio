@@ -155,7 +155,7 @@ const Home = () => {
             <CinematicText active={visibility.meta} className="bounded-font">WRITING. BRANDING. DEVELOPMENT</CinematicText>
           </header>
 
-          <div className="absolute left-1/2 top-[54%] w-full -translate-x-1/2 -translate-y-1/2 text-center md:top-[58%]">
+          <div className="absolute inset-x-0 left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center md:top-[58%]">
             <CinematicText
               as="h1"
               active={visibility.title}

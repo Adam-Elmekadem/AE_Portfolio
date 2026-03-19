@@ -81,6 +81,7 @@ const BlogsTimeline = () => {
   const [viewMode, setViewMode] = useState('month')
   const [selectedFilter, setSelectedFilter] = useState('February')
   const [isSelectOpen, setIsSelectOpen] = useState(false)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const selectRef = useRef(null)
 
   const monthOptions = useMemo(() => [...new Set(BLOG_ITEMS.map((item) => item.month))], [])
@@ -166,11 +167,49 @@ const BlogsTimeline = () => {
             </button>
           </div>
 
-          <nav className={`${styles.monoText} flex items-center gap-4 text-[10px] uppercase tracking-[0.12em] text-[#232830] sm:gap-6 sm:text-[11px]`}>
+          <nav className={`${styles.monoText} hidden items-center gap-4 text-[10px] uppercase tracking-[0.12em] text-[#232830] sm:flex sm:gap-6 sm:text-[11px]`}>
             <Link to="/about" className="transition-opacity hover:opacity-60">About</Link>
             <Link to="/contact" className="transition-opacity hover:opacity-60">Donate</Link>
             <Link to="/" className="transition-opacity hover:opacity-60">Back</Link>
           </nav>
+
+          <div className="relative sm:hidden">
+            <button
+              type="button"
+              onClick={() => setIsMobileNavOpen((prev) => !prev)}
+              className={`${styles.monoText} rounded-sm border border-[#c9cbc7] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-[#232830]`}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileNavOpen}
+            >
+              Menu
+            </button>
+
+            {isMobileNavOpen ? (
+              <div className="absolute right-0 top-[calc(100%+0.4rem)] z-20 min-w-[130px] rounded-sm border border-[#c9cbc7] bg-[#f1f2ef] p-1 shadow-[0_8px_24px_rgba(20,22,26,0.14)]">
+                <Link
+                  to="/about"
+                  onClick={() => setIsMobileNavOpen(false)}
+                  className={`${styles.monoText} block rounded-sm px-2 py-1.5 text-[10px] uppercase tracking-[0.12em] text-[#232830] transition hover:bg-[#e2e4df]`}
+                >
+                  About
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMobileNavOpen(false)}
+                  className={`${styles.monoText} block rounded-sm px-2 py-1.5 text-[10px] uppercase tracking-[0.12em] text-[#232830] transition hover:bg-[#e2e4df]`}
+                >
+                  Donate
+                </Link>
+                <Link
+                  to="/"
+                  onClick={() => setIsMobileNavOpen(false)}
+                  className={`${styles.monoText} block rounded-sm px-2 py-1.5 text-[10px] uppercase tracking-[0.12em] text-[#232830] transition hover:bg-[#e2e4df]`}
+                >
+                  Back
+                </Link>
+              </div>
+            ) : null}
+          </div>
         </div>
       </header>
 
@@ -232,7 +271,7 @@ const BlogsTimeline = () => {
                   </div>
                 </div>
 
-                <img src={item.image} alt={item.title} className={`${styles.cardImage} h-[220px] w-full object-cover`} loading="lazy" />
+                <img src={item.image} alt={item.title} className={`${styles.cardImage} h-55 w-full object-cover`} loading="lazy" />
               </article>
             ))}
           </div>

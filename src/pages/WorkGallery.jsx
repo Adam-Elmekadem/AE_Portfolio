@@ -67,10 +67,11 @@ const WorkGallery = () => {
   }, [activeGroup])
 
   const columns = useMemo(() => splitIntoColumns(filteredProjects, 3), [filteredProjects])
+  const mobileLoopItems = useMemo(() => [...filteredProjects, ...filteredProjects], [filteredProjects])
 
   return (
     <main className={`${styles.galleryBackground} min-h-screen text-white`}>
-      <section className="mx-auto flex w-full max-w-[1500px] gap-6 px-4 py-5 sm:px-6 lg:px-10">
+      <section className="mx-auto flex w-full max-w-[1500px] gap-6 px-4 py-5 pb-24 sm:px-6 lg:px-10 lg:pb-5">
         <aside className="sticky top-5 hidden h-[calc(100vh-2.5rem)] w-[270px] shrink-0 rounded-lg border border-white/10 bg-white/4 p-4 backdrop-blur-md lg:flex lg:flex-col">
           <div className="mb-4 border-b border-white/10 pb-3">
             <p className="bounded-font text-sm uppercase tracking-[0.18em] text-white/75">Work Index</p>
@@ -137,7 +138,19 @@ const WorkGallery = () => {
             </nav>
           </header>
 
-          <div className="grid h-[calc(100vh-9.5rem)] grid-cols-1 gap-4 overflow-hidden md:grid-cols-2 xl:grid-cols-3">
+          <div className="relative overflow-hidden border border-white/8 bg-white/[0.02] p-3 md:hidden">
+            <MotionDiv
+              animate={{ y: ['0%', '-50%'] }}
+              transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+              className="flex flex-col gap-5"
+            >
+              {mobileLoopItems.map((item, itemIndex) => (
+                <Card key={`${item.id}-mobile-${itemIndex}`} item={item} />
+              ))}
+            </MotionDiv>
+          </div>
+
+          <div className="hidden h-[calc(100vh-9.5rem)] grid-cols-2 gap-4 overflow-hidden md:grid xl:grid-cols-3">
             {columns.map((column, columnIndex) => {
               const loopItems = [...column, ...column]
               const duration = 20 + columnIndex * 4
@@ -159,6 +172,40 @@ const WorkGallery = () => {
           </div>
         </div>
       </section>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/12 bg-[#0a0b0f]/92 px-3 py-3 backdrop-blur-md lg:hidden">
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          <button
+            type="button"
+            onClick={() => setActiveGroup('all')}
+            className={`shrink-0 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.12em] transition ${
+              activeGroup === 'all'
+                ? 'border-white/50 bg-white/14 text-white'
+                : 'border-white/20 bg-white/6 text-white/75'
+            }`}
+          >
+            All
+          </button>
+          {FILTER_ITEMS.map((item) => {
+            const isActive = activeGroup === item.group
+
+            return (
+              <button
+                key={`mobile-filter-${item.id}`}
+                type="button"
+                onClick={() => setActiveGroup(item.group)}
+                className={`shrink-0 rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.12em] transition ${
+                  isActive
+                    ? 'border-white/50 bg-white/14 text-white'
+                    : 'border-white/20 bg-white/6 text-white/75'
+                }`}
+              >
+                {item.title}
+              </button>
+            )
+          })}
+        </div>
+      </div>
     </main>
   )
 }
