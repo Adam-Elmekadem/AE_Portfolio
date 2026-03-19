@@ -6,6 +6,7 @@ import { WORK_PROJECTS } from '../data/workProjects'
 import styles from './WorkGallery.module.css'
 
 const MotionDiv = motion.div
+const MOBILE_LOOP_COPIES = 4
 
 const FILTER_ITEMS = [
   { id: '01', title: 'Graphic Design', group: 'graphic' },
@@ -68,7 +69,10 @@ const WorkGallery = () => {
   }, [activeGroup])
 
   const columns = useMemo(() => splitIntoColumns(filteredProjects, 3), [filteredProjects])
-  const mobileLoopItems = useMemo(() => [...filteredProjects, ...filteredProjects], [filteredProjects])
+  const mobileLoopItems = useMemo(
+    () => Array.from({ length: MOBILE_LOOP_COPIES }, () => filteredProjects).flat(),
+    [filteredProjects],
+  )
 
   return (
     <main className={`${styles.galleryBackground} min-h-screen text-white`}>
@@ -138,7 +142,7 @@ const WorkGallery = () => {
 
           <div className="relative overflow-hidden border border-white/8 bg-white/[0.02] p-3 md:hidden">
             <MotionDiv
-              animate={{ y: ['0%', '-50%'] }}
+              animate={{ y: ['0%', `-${100 / MOBILE_LOOP_COPIES}%`] }}
               transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
               className="flex flex-col gap-5"
             >
