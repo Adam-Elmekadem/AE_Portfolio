@@ -97,7 +97,7 @@ const StudioHome = () => {
           </p>
         </div>
 
-        <div className="mt-2 flex items-center justify-between border-y border-[#b9bbc2] py-2 text-[9px] uppercase tracking-[0.12em] text-[#5c5f67] sm:text-[10px]">
+        <div className="mt-2 flex flex-col gap-2 border-y border-[#b9bbc2] py-2 text-[8px] uppercase tracking-[0.12em] text-[#5c5f67] sm:flex-row sm:items-center sm:gap-0 sm:text-[9px]">
           <p>Editorial Canvas</p>
           <p>Brand design, frontend builds, written narratives</p>
           <p>Creative projects for founders and studios</p>
