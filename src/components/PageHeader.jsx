@@ -10,17 +10,17 @@ export default function PageHeader({ className = '', linkClassName = '', rightLa
     <header className={`topMeta relative z-30 flex items-center justify-between gap-3 text-[10px] uppercase text-current sm:text-[11px] ${className}`}>
       <p className="bounded-font text-sm uppercase tracking-[0.08em]">AE*</p>
 
-      <nav className="relative z-30 hidden flex-1 items-center justify-center gap-7 sm:flex">
+      <nav className="relative z-30 hidden flex-1 items-center justify-center gap-7 md:flex">
         {PRIMARY_NAV_LINKS.map((item) => (
           <Link key={item.path} to={item.path} className={baseLinkClass}>{item.label}</Link>
         ))}
       </nav>
 
-      <div className="hidden sm:block">
+      <div className="hidden md:block">
         <Link to={APP_ROUTES.SUMMARY} className={baseLinkClass}>{rightLabel}</Link>
       </div>
 
-      <div className="relative sm:hidden">
+      <div className="relative md:hidden">
         <button
           type="button"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
