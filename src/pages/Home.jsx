@@ -24,7 +24,7 @@ const SUMMARY_CARDS = [
     id: '02',
     label: 'About Me',
     path: '/about',
-    image: 'public/me.png',
+    image: '/me.png',
   },
   {
     id: '03',
