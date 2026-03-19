@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import PageHeader from '../components/PageHeader'
 import { WORK_PROJECTS } from '../data/workProjects'
 import styles from './WorkGallery.module.css'
 
@@ -122,20 +123,17 @@ const WorkGallery = () => {
         </aside>
 
         <div className="flex min-w-0 flex-1 flex-col gap-4">
+          <PageHeader
+            className="text-white/85"
+            linkClassName="text-white/75"
+            rightLabel="Back to Summary"
+          />
+
           <header className="flex items-end justify-between border-b border-white/12 pb-3">
             <div>
               <p className="text-[11px] uppercase tracking-[0.14em] text-white/48">Auto Scrolling Gallery</p>
               <h1 className="bounded-font mt-1 text-3xl uppercase tracking-[0.06em] sm:text-5xl">Work Projects</h1>
             </div>
-            <nav className="hidden items-center gap-3 text-[11px] uppercase tracking-[0.12em] text-white/45 md:flex">
-              <Link to="/home" className="transition-opacity hover:opacity-65">Home</Link>
-              <span>•</span>
-              <Link to="/about" className="transition-opacity hover:opacity-65">About Me</Link>
-              <span>•</span>
-              <Link to="/blogs" className="transition-opacity hover:opacity-65">Blogs</Link>
-              <span>•</span>
-              <Link to="/contact" className="transition-opacity hover:opacity-65">Contact</Link>
-            </nav>
           </header>
 
           <div className="relative overflow-hidden border border-white/8 bg-white/[0.02] p-3 md:hidden">
