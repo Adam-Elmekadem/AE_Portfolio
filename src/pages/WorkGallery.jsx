@@ -40,7 +40,7 @@ const Card = ({ item }) => {
             className="h-[180px] w-full object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
             loading="lazy"
           />
-          <div className={`${styles.imageOverlay} pointer-events-none absolute inset-0`} />
+          <div className={`${styles.imageOverlay} pointer-events-none absolute inset-0 hidden md:block`} />
         </div>
 
         <h3 className="bounded-font mt-4 text-[clamp(1.7rem,2.9vw,2.8rem)] leading-[0.95] tracking-[-0.01em] text-[#f0f1f4]">
@@ -146,8 +146,8 @@ const WorkGallery = () => {
 
           <header className="flex items-end justify-between border-b border-white/12 pb-3">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.14em] text-white/48">Auto Scrolling Gallery</p>
-              <h1 className="bounded-font mt-1 text-3xl uppercase tracking-[0.06em] sm:text-5xl">Work Projects</h1>
+              <h1 className="bounded-font text-2xl uppercase tracking-[0.06em] sm:text-5xl">Work Projects</h1>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.14em] text-white/48 sm:text-[11px]">Auto Scrolling Gallery</p>
             </div>
           </header>
 
