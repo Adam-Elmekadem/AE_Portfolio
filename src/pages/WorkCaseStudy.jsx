@@ -18,8 +18,8 @@ const WorkCaseStudy = () => {
   }
 
   return (
-    <main className="h-screen w-full overflow-hidden bg-[#d8dde3] text-[#171a20]">
-      <section className="grid h-full w-full grid-cols-1 overflow-hidden border border-[#c2c8cf] bg-[#edf0f3] md:grid-cols-8">
+    <main className="min-h-screen w-full overflow-y-auto bg-[#d8dde3] pb-24 text-[#171a20] md:h-screen md:overflow-hidden md:pb-0">
+      <section className="grid min-h-screen w-full grid-cols-1 border border-[#c2c8cf] bg-[#edf0f3] md:h-full md:grid-cols-8 md:overflow-hidden">
         <div className="relative border-b border-[#c6ccd3] px-5 py-6 md:col-span-4 md:min-h-[620px] md:border-b-0 md:border-r">
           <div className="absolute left-3 top-3 h-6 w-6 rounded-full border border-[#8e97a1]" />
 
@@ -28,10 +28,10 @@ const WorkCaseStudy = () => {
             <h1 className="bounded-font mt-2 text-[clamp(2.2rem,6vw,4.3rem)] leading-[0.9] text-[#161a20]">
               Work.
             </h1>
-            <p className="mt-4 text-[12px] leading-relaxed text-[#48505a]">{project.subtitle}</p>
+            <p className="mt-4 text-[12px] leading-[1.65] text-[#48505a]">{project.subtitle}</p>
           </div>
 
-          <div className="absolute bottom-5 left-5 flex items-center gap-3 text-[10px] uppercase tracking-[0.12em] text-[#5a616b]">
+          <div className="mt-6 flex items-center gap-3 text-[10px] uppercase tracking-[0.12em] text-[#5a616b] md:absolute md:bottom-5 md:left-5 md:mt-0">
             <span>{project.category}</span>
             <span className="h-px w-16 bg-[#8d949d]" />
             <span>{project.duration}</span>
@@ -60,7 +60,7 @@ const WorkCaseStudy = () => {
                   <div className={`${styles.imageOverlay} pointer-events-none absolute inset-0`} />
                 </div>
 
-                <p className="mt-2 text-[11px] leading-relaxed text-[#414952]">
+                <p className="mt-2.5 text-[11px] leading-[1.55] text-[#414952]">
                   {project[section.key]}
                 </p>
               </article>
