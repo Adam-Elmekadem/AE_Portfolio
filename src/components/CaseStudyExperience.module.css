@@ -27,7 +27,7 @@
 }
 
 .stepIndex {
-  color: rgba(118, 126, 255, 0.95);
+  color: rgba(221, 223, 230, 0.72);
 }
 
 .stepLabel {
@@ -39,5 +39,5 @@
 }
 
 .accentDot {
-  background: #2d2bff;
+  background: rgba(221, 223, 230, 0.72);
 }

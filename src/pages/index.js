@@ -8,4 +8,6 @@ export { default as StudioHome } from "./StudioHome";
 export { default as StoryCaseStudy } from "./StoryCaseStudy";
 export { default as WebDevCaseStudy } from "./WebDevCaseStudy";
 export { default as WorkCaseStudy } from "./WorkCaseStudy";
+export { default as Resources } from "./Resources";
+export { default as ResourceDetail } from "./ResourceDetail";
 export { default as WorkGallery } from "./WorkGallery";

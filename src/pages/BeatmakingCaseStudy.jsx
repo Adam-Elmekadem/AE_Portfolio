@@ -18,6 +18,44 @@ export default function BeatmakingCaseStudy() {
         context: 'Personal production lab focused on mood, groove, and arrangement clarity.',
         objective: 'Compose a replayable piece with strong identity and emotional progression.',
       }}
+      embeddedSections={[
+        {
+          title: 'Sound Assets',
+          description: 'Visualizing stems, waveform mood, and tonal color themes.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=1200&q=80',
+              text: 'Sonic color and sample texture define the track identity.',
+              layout: 'left',
+            },
+            {
+              image1: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+              text: 'Arrangement diagram visualizes energy movements across progressions.',
+              layout: 'right',
+            },
+          ],
+        },
+        {
+          title: 'Brand Touchpoints',
+          description: 'EP artwork and campaign mockups for releases and social roll-out.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80',
+              text: 'Visual language supports audio brand identity in visuals and UI frames.',
+              layout: 'bottom',
+            },
+          ],
+        },
+      ]}
+      galleryImages={[
+        'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80',
+      ]}
       concept={{
         mainIdea: 'Contrast silence and impact to create narrative energy in sound.',
         creativeDirection: 'Sparse arrangement, textured layers, and controlled drop moments.',

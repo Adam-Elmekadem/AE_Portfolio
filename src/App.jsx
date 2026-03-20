@@ -8,6 +8,8 @@ import {
   BrandingCaseStudy,
   ContactPage,
   Home,
+  Resources,
+  ResourceDetail,
   StudioHome,
   StoryCaseStudy,
   WebDevCaseStudy,
@@ -30,6 +32,8 @@ function App() {
         <Route path={APP_ROUTES.CASE_STORY} element={<StoryCaseStudy />} />
         <Route path={APP_ROUTES.CASE_BEATMAKING} element={<BeatmakingCaseStudy />} />
         <Route path={APP_ROUTES.BLOGS} element={<BlogsTimeline />} />
+        <Route path={APP_ROUTES.RESOURCES} element={<Resources />} />
+        <Route path={APP_ROUTES.RESOURCE_DETAIL} element={<ResourceDetail />} />
         <Route path={APP_ROUTES.CONTACT} element={<ContactPage />} />
         <Route path="*" element={<Navigate to={APP_ROUTES.SUMMARY} replace />} />
       </Routes>

@@ -1,0 +1,5 @@
+.page {
+  background: radial-gradient(circle at 10% 20%, rgba(39, 40, 77, 0.25), transparent 35%),
+    radial-gradient(circle at 85% 30%, rgba(45, 43, 255, 0.2), transparent 45%),
+    #05070d;
+}

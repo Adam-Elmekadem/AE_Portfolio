@@ -13,11 +13,96 @@ export default function BrandingCaseStudy() {
         'Large typographic lockups and identity overlays',
         'System previews across print, social, and signage',
       ]}
+      embeddedSections={[
+        {
+          title: 'Brand Identity',
+          description: 'Core brand elements and their system-level treatment.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80',
+              text: 'The identity system defines primary and secondary marks, spacing, and usage rules.',
+              layout: 'left',
+            },
+            {
+              image1: 'https://images.unsplash.com/photo-1461783436728-0a9217714694?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=80',
+              text: 'Consistent presentation builds recognition across print and digital touchpoints.',
+              layout: 'right',
+            },
+          ],
+        },
+        {
+          title: 'Primary Logo',
+          description: 'Primary mark and lockup usage across applications.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80',
+              text: 'Primary logo variants with precise clearspace and contrast use.',
+            },
+          ],
+        },
+        {
+          title: 'Secondary Logo',
+          description: 'Compact mark variation for micro and social contexts.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+              text: 'Secondary logo is tuned for smaller sizes and utility placements.',
+              layout: 'bottom',
+            },
+          ],
+        },
+        {
+          title: 'Typography & Colors',
+          description: 'Type stack and core color palette with supportive tints.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80',
+              text: 'Typography hierarchy was made bold and legible with accent contrast.',
+              layout: 'bottom',
+            },
+          ],
+        },
+        {
+          title: 'Patterns',
+          description: 'Repeat graphics and texturing patterns that extend the identity.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1461783436728-0a9217714694?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=80',
+              text: 'Background pattern structures were built to support flexible layouts and motion.',
+              layout: 'left',
+            },
+          ],
+        },
+        {
+          title: 'Mockups',
+          description: 'Mockups showing applied identity in real world and digital contexts.',
+          blocks: [
+            {
+              image1: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80',
+              image2: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80',
+              text: 'Applied mockups highlight the identity system across brand touchpoints.',
+              layout: 'right',
+            },
+          ],
+        },
+      ]}
       overview={{
         what: 'A complete brand identity system for a travel and culture platform.',
         context: 'Client project requiring a premium visual language that feels local but globally legible.',
         objective: 'Build a coherent identity architecture with clear usage rules across all touchpoints.',
       }}
+      galleryImages={[
+        'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1461783436728-0a9217714694?auto=format&fit=crop&w=1200&q=80',
+      ]}
       concept={{
         mainIdea: 'Reduce visual noise and amplify symbolic clarity.',
         creativeDirection: 'Strong geometric forms, oversized typography, and controlled rhythm across layouts.',

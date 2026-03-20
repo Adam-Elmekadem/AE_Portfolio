@@ -3,9 +3,20 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import { WORK_PROJECTS } from '../data/workProjects'
+import { APP_ROUTES } from '../config/routes'
 import styles from './WorkGallery.module.css'
 
 const MotionDiv = motion.div
+
+const CATEGORY_CASE_STUDY_ROUTES = {
+  graphic: APP_ROUTES.CASE_BRANDING,
+  web: APP_ROUTES.CASE_WEB_DEV,
+  writing: APP_ROUTES.CASE_STORY,
+  beatmaking: APP_ROUTES.CASE_BEATMAKING,
+}
+
+const getCaseStudyLinkForProject = (project) =>
+  project.caseStudyPath || CATEGORY_CASE_STUDY_ROUTES[project.category] || `/work/${project.id}`
 
 const FILTER_ITEMS = [
   { id: '01', title: 'Graphic Design', group: 'graphic' },
@@ -30,8 +41,10 @@ const splitIntoColumns = (items, count) => {
 }
 
 const Card = ({ item }) => {
+  const linkTarget = getCaseStudyLinkForProject(item)
+
   return (
-    <Link to={`/work/${item.id}`} className="block">
+    <Link to={linkTarget} className="block">
       <article className="group border-b border-white/18 pb-5">
         <div className="relative overflow-hidden rounded-sm border border-white/12 bg-black/50">
           <img

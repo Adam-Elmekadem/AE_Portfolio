@@ -10,8 +10,10 @@ export default function CaseStudyExperience({
   visualDirection,
   overview,
   concept,
+  embeddedSections = [],
   process,
   showcase,
+  galleryImages = [],
   result,
   impact,
   cta,
@@ -19,13 +21,13 @@ export default function CaseStudyExperience({
   return (
     <main className={`${styles.page} min-h-screen text-[#f0f1f6]`}>
       <section className={`${styles.gridLine} px-4 pb-20 pt-5 sm:px-8 lg:px-12`}>
-        <div className="mx-auto w-full max-w-[1320px]">
+        <div className="mx-auto w-full max-w-330">
           <PageHeader className="text-white" linkClassName="text-white/85" rightLabel="All Work" />
 
           <header className="mt-10 border-b border-white/15 pb-10">
             <p className={`${styles.kicker} text-[10px] uppercase text-white/58`}>{projectType}</p>
             <h1 className={`${styles.heroWord} bounded-font mt-3 uppercase text-[#f3f4f7]`}>{title}</h1>
-            <p className="mt-4 max-w-[640px] text-lg leading-relaxed text-white/84">{tagline}</p>
+            <p className="mt-4 max-w-160 text-lg leading-relaxed text-white/84">{tagline}</p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               <article className={`${styles.panel} rounded-sm p-4`}>
@@ -74,6 +76,92 @@ export default function CaseStudyExperience({
               </ul>
             </article>
           </section>
+
+          {embeddedSections.length > 0 && (
+            <section className="py-10">
+              <div className="mb-6">
+                <h2 className="bounded-font text-[clamp(1.7rem,3.6vw,3.1rem)] uppercase">Design Showcase</h2>
+                <p className={`${styles.kicker} text-[10px] uppercase text-white/60`}>Visual System Breakdown</p>
+              </div>
+
+              <div className="space-y-8">
+                {embeddedSections.map((section, sectionIndex) => (
+                  <article key={section.title} className="rounded-sm p-4 bg-transparent border-0">
+                    <h3 className="bounded-font text-xl uppercase text-white/90">{section.title}</h3>
+                    {section.subtitle ? <p className="mt-1 text-sm text-white/70">{section.subtitle}</p> : null}
+
+                    <p className="mt-3 text-sm text-white/80">{section.description}</p>
+
+                    <div className="mt-5 space-y-6">
+                      {section.blocks.map((block, blockIndex) => {
+                        const layout = block.layout || ['left', 'right', 'bottom'][blockIndex % 3]
+                        const imageGroup = (
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            <div className="relative overflow-hidden rounded-sm border-0 bg-transparent">
+                              <img src={block.image1} alt={`${section.title} sample 1`} className="h-50 w-full object-cover" />
+                            </div>
+                            <div className="relative overflow-hidden rounded-sm border-0 bg-transparent">
+                              <img src={block.image2} alt={`${section.title} sample 2`} className="h-50 w-full object-cover" />
+                            </div>
+                          </div>
+                        )
+
+                        const textBlock = (
+                          <div className="rounded-sm p-4 text-sm text-white/80">
+                            {block.text}
+                          </div>
+                        )
+
+                        return (
+                          <div key={`${section.title}-${blockIndex}`} className="grid gap-4 md:grid-cols-2 md:items-start">
+                            {layout === 'left' ? (
+                              <>
+                                <div>{textBlock}</div>
+                                <div>{imageGroup}</div>
+                              </>
+                            ) : layout === 'right' ? (
+                              <>
+                                <div>{imageGroup}</div>
+                                <div>{textBlock}</div>
+                              </>
+                            ) : (
+                              <>
+                                {imageGroup}
+                                {textBlock}
+                              </>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {galleryImages.length > 0 ? (
+            <section className="border-b border-white/12 py-10">
+              <div className="mb-6 flex items-end justify-between gap-4">
+                <h2 className="bounded-font text-[clamp(1.7rem,3.6vw,3.1rem)] uppercase">Visual Gallery</h2>
+                <p className={`${styles.kicker} text-[10px] uppercase text-white/60`}>Rendered Creations</p>
+              </div>
+
+              <article className={`${styles.panel} rounded-sm p-4`}>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {galleryImages.map((src, idx) => (
+                    <div
+                      key={`${src}-${idx}`}
+                      className="relative overflow-hidden rounded-sm border border-white/20 bg-black/40"
+                    >
+                      <img src={src} alt={`${title} sample ${idx + 1}`} className="h-50 w-full object-cover" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/20 to-transparent" />
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </section>
+          ) : null}
 
           <section className="border-b border-white/12 py-10">
             <div className="mb-6 flex items-end justify-between gap-4">
@@ -154,7 +242,7 @@ export default function CaseStudyExperience({
             </Link>
             <div className="flex items-center gap-3">
               <Link to={cta.explorePath} className="rounded-full border border-white/18 px-4 py-2 text-xs uppercase tracking-[0.12em] text-white/85 transition hover:border-white/35">Explore More</Link>
-              <Link to={cta.contactPath} className="rounded-full bg-[#2d2bff] px-4 py-2 text-xs uppercase tracking-[0.12em] text-white transition hover:bg-[#3e3cff]">Contact</Link>
+              <Link to={cta.contactPath} className="rounded-full bg-white px-4 py-2 text-xs uppercase tracking-[0.12em] text-black transition hover:bg-white/85">Contact</Link>
             </div>
           </footer>
         </div>
