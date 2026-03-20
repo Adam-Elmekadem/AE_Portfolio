@@ -11,6 +11,7 @@ export const APP_ROUTES = {
   BLOGS: "/blogs",
   CONTACT: "/contact",
   RESOURCES: "/resources",
+  FONTS: "/resources/fonts",
   RESOURCE_DETAIL: "/resources/:resourceId",
   FONT_DETAIL: "/resources/fonts/:fontId",
 };

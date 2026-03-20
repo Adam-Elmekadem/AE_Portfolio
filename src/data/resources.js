@@ -1,84 +1,98 @@
 export const FONT_PRODUCTS = [
   {
-    id: "montserrat-charter",
-    title: "Montserrat + Charter",
-    heading: "Font combinations for your website",
+    id: "montserrat",
+    title: "Montserrat",
+    heading: "Free Font Library",
+    family: "Montserrat, sans-serif",
     description:
-      "Modern editorial font pairing with strong contrast and readability.",
-    preview: [
-      {
-        sample: "The quick brown fox jumps over the lazy dog",
-        family: "Montserrat, sans-serif",
-      },
-      {
-        sample: "The quick brown fox jumps over the lazy dog",
-        family: "Charter, serif",
-      },
+      "Bold geometric sans-serif for modern headlines and interfaces.",
+    download: {
+      name: "Montserrat.zip",
+      url: "https://example.com/fonts/montserrat.zip",
+    },
+    images: [
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1515378791036-0648a814c963?auto=format&fit=crop&w=1200&q=80",
     ],
-    files: [
-      {
-        name: "Montserrat.zip",
-        url: "https://example.com/fonts/montserrat.zip",
-      },
-      { name: "Charter.zip", url: "https://example.com/fonts/charter.zip" },
-    ],
-    tags: ["Fonts"],
-    image:
-      "https://images.unsplash.com/photo-1581092330863-7273766d294a?auto=format&fit=crop&w=1200&q=80",
+    sampleText: "The quick brown fox jumps over the lazy dog",
+    charset:
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz @_e'e&_\"'(-'(",
   },
   {
-    id: "crimson-oxygen",
-    title: "Crimson + Oxygen",
-    heading: "Font combinations for your website",
+    id: "crimson-text",
+    title: "Crimson Text",
+    heading: "Free Font Library",
+    family: "Crimson Text, serif",
     description:
-      "High contrast elegant heading + clean sans serif body pairing.",
-    preview: [
-      {
-        sample: "The quick brown fox jumps over the lazy dog",
-        family: "Crimson Text, serif",
-      },
-      {
-        sample: "The quick brown fox jumps over the lazy dog",
-        family: "Oxygen, sans-serif",
-      },
+      "Elegant serif crafted for editorials, portfolios, and refined long-form reading.",
+    download: {
+      name: "CrimsonText.zip",
+      url: "https://example.com/fonts/crimsontext.zip",
+    },
+    images: [
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
     ],
-    files: [
-      {
-        name: "CrimsonText.zip",
-        url: "https://example.com/fonts/crimsontext.zip",
-      },
-      { name: "Oxygen.zip", url: "https://example.com/fonts/oxygen.zip" },
-    ],
-    tags: ["Fonts"],
-    image:
-      "https://images.unsplash.com/photo-1489844091495-1edb2a9b1f56?auto=format&fit=crop&w=1200&q=80",
+    sampleText: "The quick brown fox jumps over the lazy dog",
+    charset:
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz @_e'e&_\"'(-'(",
   },
   {
-    id: "satisfy-basekerville",
-    title: "Satisfy + Baskerville",
-    heading: "Font combinations for your website",
+    id: "satisfy",
+    title: "Satisfy",
+    heading: "Free Font Library",
+    family: "Satisfy, cursive",
     description:
-      "A playful script plus classic serif combination for dynamic typographic hierarchy.",
-    preview: [
-      {
-        sample: "The quick brown fox jumps over the lazy dog",
-        family: "Satisfy, cursive",
-      },
-      {
-        sample: "The quick brown fox jumps over the lazy dog",
-        family: "Baskerville, serif",
-      },
+      "Expressive handwritten script ideal for signatures, branding accents, and hero words.",
+    download: {
+      name: "Satisfy.zip",
+      url: "https://example.com/fonts/satisfy.zip",
+    },
+    images: [
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1200&q=80",
     ],
-    files: [
-      { name: "Satisfy.zip", url: "https://example.com/fonts/satisfy.zip" },
-      {
-        name: "Baskerville.zip",
-        url: "https://example.com/fonts/baskerville.zip",
-      },
+    sampleText: "The quick brown fox jumps over the lazy dog",
+    charset:
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz @_e'e&_\"'(-'(",
+  },
+  {
+    id: "raleway",
+    title: "Raleway",
+    heading: "Free Font Library",
+    family: "Raleway, sans-serif",
+    description:
+      "Clean and elegant sans-serif with beautiful weights for modern UI and branding.",
+    download: {
+      name: "Raleway.zip",
+      url: "https://example.com/fonts/raleway.zip",
+    },
+    images: [
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1200&q=80",
     ],
-    tags: ["Fonts"],
-    image:
-      "https://images.unsplash.com/photo-1482863476958-2dddd0bf6a02?auto=format&fit=crop&w=1200&q=80",
+    sampleText: "The quick brown fox jumps over the lazy dog",
+    charset:
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz @_e'e&_\"'(-'(",
+  },
+  {
+    id: "nanum-myeongjo",
+    title: "Nanum Myeongjo",
+    heading: "Free Font Library",
+    family: "Nanum Myeongjo, serif",
+    description:
+      "Classic Korean-inspired serif with high readability and beautiful rhythm.",
+    download: {
+      name: "NanumMyeongjo.zip",
+      url: "https://example.com/fonts/nanummyeongjo.zip",
+    },
+    images: [
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=1200&q=80",
+    ],
+    sampleText: "The quick brown fox jumps over the lazy dog",
+    charset:
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz @_e'e&_\"'(-'(",
   },
 ];
 

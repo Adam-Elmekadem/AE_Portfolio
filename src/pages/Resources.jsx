@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import { APP_ROUTES } from '../config/routes'
-import { FONT_PRODUCTS, RESOURCES } from '../data/resources'
+import { RESOURCES } from '../data/resources'
 import styles from './Resources.module.css'
 
 const CATEGORIES = [
@@ -25,15 +25,11 @@ export default function Resources() {
 
   const activeSubFilters = category === 'all' ? ['All'] : SUBFILTERS[category]
 
-  const firstFontId = FONT_PRODUCTS?.[0]?.id ?? null
-
   const filtered = RESOURCES.filter((resource) => {
     if (category !== 'all' && resource.category !== category) return false
     if (subFilter === 'All' || category === 'all') return true
     return resource.tags?.includes(subFilter)
   })
-
-  const fontResource = RESOURCES.find((resource) => resource.tags?.includes('Fonts'))
 
   return (
     <main className={`${styles.page} min-h-screen text-white`}>
@@ -74,9 +70,8 @@ export default function Resources() {
                 key={item}
                 onClick={() => {
                   setSubFilter(item)
-                  if (item === 'Fonts' && FONT_PRODUCTS?.length > 0) {
-                    const fontId = FONT_PRODUCTS[0].id
-                    navigate(APP_ROUTES.FONT_DETAIL.replace(':fontId', fontId))
+                  if (item === 'Fonts') {
+                    navigate(APP_ROUTES.FONTS)
                   }
                 }}
                 className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.1em] transition ${
