@@ -11,7 +11,10 @@ export default function CaseStudyExperience({
   overview,
   concept,
   embeddedSections = [],
+  embeddedHeading = 'Design Showcase',
+  embeddedKicker = 'Visual System Breakdown',
   process,
+  hideProcess = false,
   showcase,
   galleryImages = [],
   result,
@@ -80,12 +83,12 @@ export default function CaseStudyExperience({
           {embeddedSections.length > 0 && (
             <section className="py-10">
               <div className="mb-6">
-                <h2 className="bounded-font text-[clamp(1.7rem,3.6vw,3.1rem)] uppercase">Design Showcase</h2>
-                <p className={`${styles.kicker} text-[10px] uppercase text-white/60`}>Visual System Breakdown</p>
+                <h2 className="bounded-font text-[clamp(1.7rem,3.6vw,3.1rem)] uppercase">{embeddedHeading}</h2>
+                <p className={`${styles.kicker} text-[10px] uppercase text-white/60`}>{embeddedKicker}</p>
               </div>
 
               <div className="space-y-8">
-                {embeddedSections.map((section, sectionIndex) => (
+                {embeddedSections.map((section) => (
                   <article key={section.title} className="rounded-sm p-4 bg-transparent border-0">
                     <h3 className="bounded-font text-xl uppercase text-white/90">{section.title}</h3>
                     {section.subtitle ? <p className="mt-1 text-sm text-white/70">{section.subtitle}</p> : null}
@@ -95,7 +98,7 @@ export default function CaseStudyExperience({
                     <div className="mt-5 space-y-6">
                       {section.blocks.map((block, blockIndex) => {
                         const layout = block.layout || ['left', 'right', 'bottom'][blockIndex % 3]
-                        const imageGroup = (
+                        const imageGroup = block.image2 ? (
                           <div className="grid gap-3 sm:grid-cols-2">
                             <div className="relative overflow-hidden rounded-sm border-0 bg-transparent">
                               <img src={block.image1} alt={`${section.title} sample 1`} className="h-50 w-full object-cover" />
@@ -103,6 +106,10 @@ export default function CaseStudyExperience({
                             <div className="relative overflow-hidden rounded-sm border-0 bg-transparent">
                               <img src={block.image2} alt={`${section.title} sample 2`} className="h-50 w-full object-cover" />
                             </div>
+                          </div>
+                        ) : (
+                          <div className="relative overflow-hidden rounded-sm border-0 bg-transparent">
+                            <img src={block.image1} alt={`${section.title} sample`} className="h-72 w-full object-cover" />
                           </div>
                         )
 
@@ -163,6 +170,7 @@ export default function CaseStudyExperience({
             </section>
           ) : null}
 
+          {!hideProcess && Array.isArray(process) && process.length > 0 ? (
           <section className="border-b border-white/12 py-10">
             <div className="mb-6 flex items-end justify-between gap-4">
               <h2 className="bounded-font text-[clamp(1.7rem,3.6vw,3.1rem)] uppercase">Process</h2>
@@ -179,6 +187,7 @@ export default function CaseStudyExperience({
               ))}
             </div>
           </section>
+          ) : null}
 
           <section className="grid gap-4 border-b border-white/12 py-10 md:grid-cols-3">
             <h2 className="bounded-font text-[clamp(1.7rem,3.6vw,3.1rem)] uppercase">Showcase</h2>
