@@ -4,6 +4,10 @@ export const APP_ROUTES = {
   ABOUT: "/about",
   WORK: "/work",
   WORK_CASE_STUDY: "/work/:projectId",
+  CASE_BRANDING: "/case/branding",
+  CASE_WEB_DEV: "/case/web-development",
+  CASE_STORY: "/case/story",
+  CASE_BEATMAKING: "/case/beatmaking",
   BLOGS: "/blogs",
   CONTACT: "/contact",
 };

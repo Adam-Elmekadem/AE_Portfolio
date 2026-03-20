@@ -1,7 +1,11 @@
 export { default as AboutStory } from "./AboutStory";
+export { default as BeatmakingCaseStudy } from "./BeatmakingCaseStudy";
 export { default as BlogsTimeline } from "./BlogsTimeline";
+export { default as BrandingCaseStudy } from "./BrandingCaseStudy";
 export { default as ContactPage } from "./ContactPage";
 export { default as Home } from "./Home";
 export { default as StudioHome } from "./StudioHome";
+export { default as StoryCaseStudy } from "./StoryCaseStudy";
+export { default as WebDevCaseStudy } from "./WebDevCaseStudy";
 export { default as WorkCaseStudy } from "./WorkCaseStudy";
 export { default as WorkGallery } from "./WorkGallery";
