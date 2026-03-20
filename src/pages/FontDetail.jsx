@@ -114,7 +114,7 @@ export default function FontDetail() {
 
         <section className="mb-8 border-b border-white/10 pb-8">
           <p className="text-xs uppercase tracking-[0.16em] text-white/55">Live Preview</p>
-          <div className="mt-3 grid gap-4 md:grid-cols-[1fr_280px] md:items-start">
+          <div className="mt-3 grid gap-4 md:grid-cols-[1fr_280px] items-start">
             <div>
               <label htmlFor="font-preview-input" className="block text-sm text-white/75">
                 Write your own text
@@ -126,11 +126,11 @@ export default function FontDetail() {
                 className="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-2 text-sm text-white outline-none focus:border-white"
                 placeholder="Type something..."
               />
-              <p className="mt-5 text-5xl leading-tight" style={{ fontFamily: previewFontFamily || font.family }}>
+              <p className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-tight break-words" style={{ fontFamily: previewFontFamily || font.family, whiteSpace: 'normal' }}>
                 {previewText || font.sampleText}
               </p>
             </div>
-            <div className="flex flex-col items-start gap-3 md:items-end">
+            <div className="flex w-full flex-col items-start gap-3 md:w-auto md:items-end">
               <button
                 onClick={() => {
                   const variant = defaultVariant
@@ -209,8 +209,12 @@ export default function FontDetail() {
           <p className="text-xs uppercase tracking-[0.16em] text-white/55">Examples</p>
           <div className="mt-3 grid gap-3 md:grid-cols-2">
             {font.images.map((image, index) => (
-              <div key={`${font.id}-example-${index}`} className="h-[210px] overflow-hidden rounded-sm">
-                <img src={image} alt={`${font.family} example ${index + 1}`} className="h-full w-full object-cover" />
+              <div
+                key={`${font.id}-example-${index}`}
+                className="overflow-hidden rounded-sm"
+                style={{ aspectRatio: '16 / 9', minHeight: '170px' }}
+              >
+                <img src={image} alt={`${font.family} example ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
               </div>
             ))}
           </div>
