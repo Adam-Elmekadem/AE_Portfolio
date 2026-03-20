@@ -7,6 +7,7 @@ import {
   BlogsTimeline,
   BrandingCaseStudy,
   ContactPage,
+  FontDetail,
   Home,
   Resources,
   ResourceDetail,
@@ -34,6 +35,7 @@ function App() {
         <Route path={APP_ROUTES.BLOGS} element={<BlogsTimeline />} />
         <Route path={APP_ROUTES.RESOURCES} element={<Resources />} />
         <Route path={APP_ROUTES.RESOURCE_DETAIL} element={<ResourceDetail />} />
+        <Route path={APP_ROUTES.FONT_DETAIL} element={<FontDetail />} />
         <Route path={APP_ROUTES.CONTACT} element={<ContactPage />} />
         <Route path="*" element={<Navigate to={APP_ROUTES.SUMMARY} replace />} />
       </Routes>

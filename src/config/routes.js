@@ -12,6 +12,7 @@ export const APP_ROUTES = {
   CONTACT: "/contact",
   RESOURCES: "/resources",
   RESOURCE_DETAIL: "/resources/:resourceId",
+  FONT_DETAIL: "/resources/fonts/:fontId",
 };
 
 export const PRIMARY_NAV_LINKS = [
