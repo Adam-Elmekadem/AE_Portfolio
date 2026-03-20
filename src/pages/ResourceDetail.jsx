@@ -37,8 +37,17 @@ export default function ResourceDetail() {
 
           <div className="grid gap-4 md:grid-cols-2">
             {resource.images.map((src, index) => (
-              <div key={index} className="overflow-hidden rounded-lg border border-white/15 bg-white/5" style={{ aspectRatio: '16 / 9', minHeight: '180px' }}>
-                <img src={src} alt={`${resource.title} screenshot ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
+              <div
+                key={index}
+                className="w-full min-w-0 overflow-hidden rounded-lg border border-white/15 bg-white/5"
+                style={{ aspectRatio: '16 / 9', minHeight: '180px' }}
+              >
+                <img
+                  src={src}
+                  alt={`${resource.title} screenshot ${index + 1}`}
+                  className="h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>

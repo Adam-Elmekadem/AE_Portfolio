@@ -93,9 +93,17 @@ export default function Resources() {
             </div>
           ) : (
             filtered.map((resource) => (
-              <article key={resource.id} className="rounded-lg border border-white/15 bg-white/5 p-5 backdrop-blur-md transition hover:border-white/30">
-                <div className="mb-3 overflow-hidden rounded-md" style={{ aspectRatio: '16 / 9', minHeight: '160px' }}>
-                  <img src={resource.images[0]} alt={`${resource.title} preview`} className="h-full w-full object-cover" loading="lazy" />
+              <article
+                key={resource.id}
+                className="flex w-full min-w-0 flex-col rounded-lg border border-white/15 bg-white/5 p-5 backdrop-blur-md transition hover:border-white/30"
+              >
+                <div className="mb-3 w-full overflow-hidden rounded-md aspect-video">
+                  <img
+                    src={resource.images[0]}
+                    alt={`${resource.title} preview`}
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
                 </div>
                 <p className="text-xs uppercase tracking-wider text-blue-100">{resource.category} ・ {resource.price}</p>
                 <h2 className="mt-2 text-2xl font-bold text-white">{resource.title}</h2>
