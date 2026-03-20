@@ -1,22 +1,94 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
-import { FONT_PRODUCTS } from '../data/resources'
+import { downloadAllFonts, downloadSingleVariant, fetchGoogleFonts } from '../services/googleFonts'
 
 export default function FontDetail() {
   const [donateOpen, setDonateOpen] = useState(false)
   const [pendingDownload, setPendingDownload] = useState('')
   const [previewText, setPreviewText] = useState('The quick brown fox jumps over the lazy dog')
+  const [fonts, setFonts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [allDownloadRequested, setAllDownloadRequested] = useState(false)
 
   const { fontId } = useParams()
-  const font = FONT_PRODUCTS.find((item) => item.id === fontId)
+  const font = useMemo(() => fonts.find((item) => item.id === fontId), [fonts, fontId])
+  const defaultVariant = useMemo(() => {
+    if (!font) return ''
+    if (font.files?.regular) return 'regular'
+    return Object.keys(font.files || {})[0] || ''
+  }, [font])
+  const previewFontFamily = useMemo(() => (font ? `Preview-${font.id}` : ''), [font])
+  const previewFontFace = useMemo(() => {
+    if (!font || !defaultVariant) return ''
+    const src = font.files?.[defaultVariant]
+    if (!src) return ''
+    return `@font-face { font-family: '${previewFontFamily}'; src: url('${src}') format('woff2'); font-display: swap; }`
+  }, [defaultVariant, font, previewFontFamily])
+
+  useEffect(() => {
+    let active = true
+
+    const loadFonts = async () => {
+      try {
+        const data = await fetchGoogleFonts()
+        if (!active) return
+        setFonts(data)
+      } catch (loadError) {
+        if (!active) return
+        setError(loadError.message || 'Failed to load font')
+      } finally {
+        if (!active) return
+        setLoading(false)
+      }
+    }
+
+    loadFonts()
+    return () => {
+      active = false
+    }
+  }, [])
+
+  useEffect(() => {
+    if (donateOpen || !allDownloadRequested || !font) return
+
+    downloadAllFonts(font).finally(() => {
+      setAllDownloadRequested(false)
+      setPendingDownload('')
+    })
+  }, [allDownloadRequested, donateOpen, font])
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-[#0b0d14] text-white">
+        <section className="mx-auto w-full max-w-[980px] px-4 py-10 sm:px-6 lg:px-8">
+          <div className="h-6 w-48 animate-pulse rounded bg-white/10" />
+          <div className="mt-8 h-16 w-2/3 animate-pulse rounded bg-white/10" />
+          <div className="mt-4 h-6 w-full animate-pulse rounded bg-white/10" />
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="h-44 animate-pulse rounded bg-white/10" />
+            <div className="h-44 animate-pulse rounded bg-white/10" />
+          </div>
+
+          <div className="mt-8 grid gap-3 md:grid-cols-2">
+            <div className="h-48 animate-pulse rounded bg-white/10" />
+            <div className="h-48 animate-pulse rounded bg-white/10" />
+          </div>
+        </section>
+      </main>
+    )
+  }
 
   if (!font) {
     return (
       <main className="min-h-screen bg-[#0b0d14] text-white">
         <section className="mx-auto w-full max-w-[980px] px-4 py-20 text-center">
           <h1 className="text-3xl font-bold">Font not found</h1>
-          <p className="mt-3 text-white/70">That font product does not exist.</p>
+          <p className="mt-3 text-white/70">
+            {error || 'That font product does not exist.'}
+          </p>
           <Link
             to="/resources"
             className="mt-5 inline-block rounded-full border border-white/30 px-4 py-2 text-sm text-white transition hover:bg-white/10"
@@ -31,11 +103,12 @@ export default function FontDetail() {
   return (
     <main className="min-h-screen bg-[#0b0d14] text-white">
       <section className="mx-auto w-full max-w-[980px] px-4 py-10 sm:px-6 lg:px-8">
+        {previewFontFace ? <style>{previewFontFace}</style> : null}
         <PageHeader className="text-white" linkClassName="text-white/70" rightLabel="All Work" />
 
         <header className="mt-8 mb-8 border-b border-white/10 pb-6">
           <h5 className="text-xs uppercase tracking-[0.22em] text-white/50">Free Font Detail</h5>
-          <h1 className="bounded-font text-5xl uppercase tracking-tight">{font.title}</h1>
+          <h1 className="bounded-font text-5xl uppercase tracking-tight">{font.family}</h1>
           <p className="mt-3 max-w-[720px] text-lg text-white/80">{font.description}</p>
         </header>
 
@@ -53,19 +126,30 @@ export default function FontDetail() {
                 className="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-2 text-sm text-white outline-none focus:border-white"
                 placeholder="Type something..."
               />
-              <p className="mt-5 text-5xl leading-tight" style={{ fontFamily: font.family }}>
+              <p className="mt-5 text-5xl leading-tight" style={{ fontFamily: previewFontFamily || font.family }}>
                 {previewText || font.sampleText}
               </p>
             </div>
-            <div className="md:text-right">
+            <div className="flex flex-col items-start gap-3 md:items-end">
               <button
                 onClick={() => {
-                  setPendingDownload(font.download.url)
+                  const variant = defaultVariant
+                  setPendingDownload(variant || '')
                   setDonateOpen(true)
                 }}
                 className="rounded-full border border-blue-400 px-4 py-2 text-sm text-blue-200 transition hover:bg-blue-500/20"
               >
-                Download {font.download.name}
+                Download {defaultVariant || 'Regular'}
+              </button>
+              <button
+                onClick={() => {
+                  setPendingDownload('DOWNLOAD_ALL')
+                  setAllDownloadRequested(true)
+                  setDonateOpen(true)
+                }}
+                className="rounded-full border border-white/35 px-4 py-2 text-sm text-white/85 transition hover:bg-white/10"
+              >
+                Download All
               </button>
             </div>
           </div>
@@ -73,7 +157,7 @@ export default function FontDetail() {
 
         <section className="mb-8 border-b border-white/10 pb-8">
           <p className="text-xs uppercase tracking-[0.16em] text-white/55">Character Showcase</p>
-          <p className="mt-3 text-3xl leading-relaxed" style={{ fontFamily: font.family }}>
+          <p className="mt-3 text-3xl leading-relaxed" style={{ fontFamily: previewFontFamily || font.family }}>
             {font.charset}
           </p>
         </section>
@@ -97,8 +181,8 @@ export default function FontDetail() {
                   <button
                     onClick={() => {
                       setDonateOpen(false)
-                      if (pendingDownload) {
-                        window.open(pendingDownload, '_blank')
+                      if (pendingDownload && pendingDownload !== 'DOWNLOAD_ALL') {
+                        downloadSingleVariant(font, pendingDownload)
                         setPendingDownload('')
                       }
                     }}
@@ -107,7 +191,11 @@ export default function FontDetail() {
                     Continue Download
                   </button>
                   <button
-                    onClick={() => setDonateOpen(false)}
+                    onClick={() => {
+                      setDonateOpen(false)
+                      setPendingDownload('')
+                      setAllDownloadRequested(false)
+                    }}
                     className="rounded-full border border-white/30 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
                   >
                     Cancel
@@ -122,7 +210,7 @@ export default function FontDetail() {
           <div className="mt-3 grid gap-3 md:grid-cols-2">
             {font.images.map((image, index) => (
               <div key={`${font.id}-example-${index}`} className="h-[210px] overflow-hidden rounded-sm">
-                <img src={image} alt={`${font.title} example ${index + 1}`} className="h-full w-full object-cover" />
+                <img src={image} alt={`${font.family} example ${index + 1}`} className="h-full w-full object-cover" />
               </div>
             ))}
           </div>
