@@ -136,13 +136,13 @@ const AboutStory = () => {
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="bounded-font mb-10 text-[clamp(2.6rem,6vw,5.5rem)] uppercase tracking-[0.08em] text-white">Services</h2>
 
-          <div ref={videoSectionRef} className="mb-8 min-h-[220vh]">
+          <div ref={videoSectionRef} className="-mx-4 mb-8 min-h-[180vh] sm:mx-0 sm:min-h-[220vh]">
             <div
-              className="sticky top-0 overflow-hidden rounded-md border border-white/10 bg-black/30 transition-[height,transform] duration-300"
+              className="sticky top-0 overflow-hidden border-y border-white/10 bg-black/40 transition-[height,transform] duration-300 sm:rounded-md sm:border"
               style={{
                 height: videoEnded
-                  ? `clamp(280px, ${100 - shrinkProgress * 58}vh, 100vh)`
-                  : '100vh',
+                  ? `clamp(260px, ${100 - shrinkProgress * 58}vh, 100svh)`
+                  : '100svh',
                 transform: videoEnded
                   ? `scale(${1 - shrinkProgress * 0.12})`
                   : 'scale(1)',
@@ -154,7 +154,7 @@ const AboutStory = () => {
                 src="/AdamElmekadem.mp4"
                 muted
                 playsInline
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain sm:object-cover object-center"
                 onEnded={handleVideoEnd}
                 onTimeUpdate={handleTimeUpdate}
               />
