@@ -11,7 +11,9 @@ import {
 
 const INTRO_HOLD_MS = 1700
 const INTRO_FADE_OUT_MS = 850
-const AUDIO_SOURCE = encodeURI('/Hans Zimmer - Time (Official Audio) - WaterTower Music.mp3')
+const MOBILE_INTRO_HOLD_MS = 180
+const MOBILE_INTRO_FADE_OUT_MS = 180
+const MOBILE_MEDIA_QUERY = '(max-width: 767px)'
 
 const SUMMARY_CARDS = [
   {
@@ -63,30 +65,46 @@ const Home = () => {
   const dispatch = useDispatch()
   const currentFrame = useSelector(selectCurrentFrame)
   const [showSummary, setShowSummary] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
   const cursorSquareRef = useRef(null)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY)
+    const updateViewport = () => setIsMobileViewport(mediaQuery.matches)
+
+    updateViewport()
+    mediaQuery.addEventListener('change', updateViewport)
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateViewport)
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(setCurrentFrame('all'))
     setShowSummary(false)
 
+    const introHold = isMobileViewport ? MOBILE_INTRO_HOLD_MS : INTRO_HOLD_MS
+    const introFadeOut = isMobileViewport ? MOBILE_INTRO_FADE_OUT_MS : INTRO_FADE_OUT_MS
+
     const fadeOutTimer = window.setTimeout(() => {
       dispatch(setCurrentFrame('blank'))
-    }, INTRO_HOLD_MS)
+    }, introHold)
 
     const summaryTimer = window.setTimeout(() => {
       setShowSummary(true)
-    }, INTRO_HOLD_MS + INTRO_FADE_OUT_MS + 120)
+    }, introHold + introFadeOut + 90)
 
     return () => {
       window.clearTimeout(fadeOutTimer)
       window.clearTimeout(summaryTimer)
     }
-  }, [dispatch])
+  }, [dispatch, isMobileViewport])
 
   useEffect(() => {
     const cursorSquare = cursorSquareRef.current
 
-    if (!cursorSquare) {
+    if (!cursorSquare || isMobileViewport) {
       return
     }
 
@@ -129,7 +147,7 @@ const Home = () => {
         window.cancelAnimationFrame(rafId)
       }
     }
-  }, [])
+  }, [isMobileViewport])
 
   const visibility = getFrameVisibility(currentFrame)
 
@@ -200,7 +218,7 @@ const Home = () => {
             </h2>
 
             <div className="mt-8 grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:mt-10 lg:grid-cols-5">
-              {SUMMARY_CARDS.map((card) => (
+              {SUMMARY_CARDS.map((card, index) => (
                 <article key={card.id} className="group">
                   <Link to={card.path} className="block focus-visible:outline-none">
                     <div className="relative h-55 overflow-hidden rounded-md border border-white/50 bg-[#d2d3d5] transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_12px_24px_rgba(20,22,28,0.2)] sm:h-62.5 md:h-72.5 lg:h-82.5">
@@ -208,7 +226,10 @@ const Home = () => {
                         src={card.image}
                         alt={`${card.label} preview`}
                         className={`${styles.summaryCardImage} absolute inset-0 h-full w-full object-cover`}
-                        loading="lazy"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        fetchPriority={index === 0 ? 'high' : 'auto'}
+                        decoding="async"
+                        sizes="(max-width: 640px) 48vw, (max-width: 1024px) 32vw, 20vw"
                       />
                       <span className="absolute left-2 top-1 bounded-font text-6xl leading-none tracking-[0.06em] text-white/70 sm:text-7xl">
                         {card.id}

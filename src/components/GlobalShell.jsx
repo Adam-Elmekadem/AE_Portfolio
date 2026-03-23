@@ -1,41 +1,67 @@
 import { useEffect, useRef, useState } from 'react'
 
 const AUDIO_SOURCE = encodeURI('/Hans Zimmer - Time (Official Audio) - WaterTower Music.mp3')
+const MOBILE_MEDIA_QUERY = '(max-width: 767px)'
 
 export default function GlobalShell({ children }) {
   const audioRef = useRef(null)
   const cursorSquareRef = useRef(null)
   const [isMusicPlaying, setIsMusicPlaying] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY)
+    const updateViewport = () => setIsMobileViewport(mediaQuery.matches)
+
+    updateViewport()
+    mediaQuery.addEventListener('change', updateViewport)
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateViewport)
+    }
+  }, [])
 
   useEffect(() => {
     const audio = audioRef.current
 
-    if (!audio) {
+    if (!audio || isMobileViewport) {
       return
     }
 
     audio.volume = 0.35
     audio.loop = true
 
-    const playPromise = audio.play()
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
 
-    if (!playPromise) {
+    if (connection?.saveData) {
       return
     }
 
-    playPromise
-      .then(() => {
-        setIsMusicPlaying(true)
-      })
-      .catch(() => {
-        setIsMusicPlaying(false)
-      })
-  }, [])
+    const playTimer = window.setTimeout(() => {
+      const playPromise = audio.play()
+
+      if (!playPromise) {
+        return
+      }
+
+      playPromise
+        .then(() => {
+          setIsMusicPlaying(true)
+        })
+        .catch(() => {
+          setIsMusicPlaying(false)
+        })
+    }, 1200)
+
+    return () => {
+      window.clearTimeout(playTimer)
+    }
+  }, [isMobileViewport])
 
   useEffect(() => {
     const cursorSquare = cursorSquareRef.current
 
-    if (!cursorSquare) {
+    if (!cursorSquare || isMobileViewport) {
       return
     }
 
@@ -78,7 +104,7 @@ export default function GlobalShell({ children }) {
         window.cancelAnimationFrame(rafId)
       }
     }
-  }, [])
+  }, [isMobileViewport])
 
   const toggleMusic = () => {
     const audio = audioRef.current
@@ -101,12 +127,12 @@ export default function GlobalShell({ children }) {
 
   return (
     <>
-      <audio ref={audioRef} src={AUDIO_SOURCE} preload="auto" />
+      <audio ref={audioRef} src={AUDIO_SOURCE} preload={isMobileViewport ? 'none' : 'metadata'} />
 
       <div
         ref={cursorSquareRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-50 h-6 w-6 border border-white/70 bg-white/10 opacity-0 mix-blend-difference transition-opacity duration-200"
+        className={`pointer-events-none fixed left-0 top-0 z-50 h-6 w-6 border border-white/70 bg-white/10 opacity-0 mix-blend-difference transition-opacity duration-200 ${isMobileViewport ? 'hidden' : ''}`}
       />
 
       <button
