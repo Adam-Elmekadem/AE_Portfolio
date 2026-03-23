@@ -4,15 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node server.js",
+    "dev:spa": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build:ssr": "vite build",
+    "preview": "vite preview",
+    "serve:ssr": "node server.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/vite": "^4.2.1",
     "axios": "^1.13.6",
+    "express": "^5.2.1",
     "framer-motion": "^12.38.0",
     "jszip": "^3.10.1",
     "react": "^19.1.1",
@@ -32,6 +36,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.4.0",
+    "vike": "^0.4.255",
     "vite": "^7.1.7"
   }
 }
