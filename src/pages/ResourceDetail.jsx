@@ -9,7 +9,7 @@ export default function ResourceDetail() {
   if (!resource) {
     return (
       <main className="min-h-screen bg-[#070a10] text-white">
-        <section className="mx-auto w-full max-w-[980px] px-4 py-20 text-center">
+        <section className="mx-auto w-full max-w-245 px-4 py-20 text-center">
           <h1 className="text-3xl font-bold">Resource not found</h1>
           <p className="mt-3 text-white/70">The resource you are looking for doesn’t exist or has been removed.</p>
           <Link to="/resources" className="mt-5 inline-block rounded-full border border-white/30 px-4 py-2 text-sm text-white transition hover:bg-white/10">
@@ -22,7 +22,7 @@ export default function ResourceDetail() {
 
   return (
     <main className="min-h-screen bg-[#070a10] text-white">
-      <section className="mx-auto w-full max-w-[980px] px-4 py-10 sm:px-6 lg:px-8">
+      <section className="mx-auto w-full max-w-245 px-4 py-10 sm:px-6 lg:px-8">
         <PageHeader className="text-white" linkClassName="text-white/70" rightLabel="All Work" />
 
         <div className="mt-8 space-y-6">

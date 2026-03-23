@@ -35,14 +35,14 @@ export default function Resources() {
 
   return (
     <main className={`${styles.page} min-h-screen text-white`}>
-      <section className="mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8">
+      <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <PageHeader className="text-white" linkClassName="text-white/80" rightLabel="All Work" />
 
         <header className="mt-8 mb-8 border-b border-white/15 pb-8 sm:mt-10 sm:pb-10">
           <h1 className="bounded-font text-[clamp(3rem,9vw,7rem)] uppercase leading-[0.9] tracking-tight text-white">
             Resources
           </h1>
-          <p className="mt-4 max-w-[760px] text-sm leading-relaxed text-white/75 sm:text-base">
+          <p className="mt-4 max-w-190 text-sm leading-relaxed text-white/75 sm:text-base">
             Curated free assets for design, web development, and beatmaking. Open any row to preview details,
             then jump into the full resource page.
           </p>
@@ -57,7 +57,7 @@ export default function Resources() {
                 setCategory(cat.key)
                 setSubFilter('All')
               }}
-              className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.1em] transition ${
+              className={`rounded-full border px-3 py-1 text-xs uppercase tracking-widest transition ${
                 category === cat.key
                   ? 'border-white bg-white/15 text-white'
                   : 'border-white/20 bg-white/5 text-white/70 hover:border-white/35 hover:text-white'
@@ -79,7 +79,7 @@ export default function Resources() {
                     navigate(APP_ROUTES.FONTS)
                   }
                 }}
-                className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.1em] transition ${
+                className={`rounded-full border px-3 py-1 text-xs uppercase tracking-widest transition ${
                   subFilter === item
                     ? 'border-white bg-white/15 text-white'
                     : 'border-white/20 bg-white/5 text-white/70 hover:border-white/35 hover:text-white'
@@ -118,7 +118,7 @@ export default function Resources() {
 
                 {openResourceId === resource.id ? (
                   <div className="mt-4 grid gap-4 pb-1 md:grid-cols-[220px_1fr_auto] md:items-center">
-                    <div className="w-full overflow-hidden rounded-md aspect-video md:aspect-[4/3]">
+                    <div className="w-full overflow-hidden rounded-md aspect-video md:aspect-4/3">
                       <img
                         src={resource.images[0]}
                         alt={`${resource.title} preview`}

@@ -185,7 +185,7 @@ const BlogsTimeline = () => {
             </button>
 
             {isMobileNavOpen ? (
-              <div className="absolute right-0 top-[calc(100%+0.4rem)] z-20 min-w-[130px] rounded-sm border border-[#c9cbc7] bg-[#f1f2ef] p-1 shadow-[0_8px_24px_rgba(20,22,26,0.14)]">
+              <div className="absolute right-0 top-[calc(100%+0.4rem)] z-20 min-w-32.5 rounded-sm border border-[#c9cbc7] bg-[#f1f2ef] p-1 shadow-[0_8px_24px_rgba(20,22,26,0.14)]">
                 <Link
                   to="/about"
                   onClick={() => setIsMobileNavOpen(false)}
@@ -256,7 +256,7 @@ const BlogsTimeline = () => {
             {filteredItems.map((item, index) => (
               <article
                 key={item.id}
-                className={`${styles.card} ${index === 0 ? styles.cardActive : ''} flex min-h-[260px] flex-col overflow-hidden transition hover:-translate-y-0.5`}
+                className={`${styles.card} ${index === 0 ? styles.cardActive : ''} flex min-h-65 flex-col overflow-hidden transition hover:-translate-y-0.5`}
               >
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
                   <span className={`${styles.cardNumber} bounded-font text-6xl leading-none`}>{item.id}</span>

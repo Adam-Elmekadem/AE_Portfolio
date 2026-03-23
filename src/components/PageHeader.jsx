@@ -32,7 +32,7 @@ export default function PageHeader({ className = '', linkClassName = '', rightLa
         </button>
 
         {isMobileMenuOpen ? (
-          <div className="absolute right-0 top-[calc(100%+0.45rem)] z-50 min-w-[180px] border border-white/15 bg-[#0a0c11]/95 p-2 shadow-[0_10px_24px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+          <div className="absolute right-0 top-[calc(100%+0.45rem)] z-50 min-w-45 border border-white/15 bg-[#0a0c11]/95 p-2 shadow-[0_10px_24px_rgba(0,0,0,0.28)] backdrop-blur-sm">
             <nav className="flex flex-col gap-1">
               {PRIMARY_NAV_LINKS.map((item) => (
                 <Link

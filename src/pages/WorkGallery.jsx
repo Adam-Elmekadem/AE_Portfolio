@@ -50,7 +50,7 @@ const Card = ({ item }) => {
           <img
             src={item.cover}
             alt={item.title}
-            className="h-[180px] w-full object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+            className="h-45 w-full object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
             loading="lazy"
           />
           <div className={`${styles.imageOverlay} pointer-events-none absolute inset-0 hidden md:block`} />
@@ -100,8 +100,8 @@ const WorkGallery = () => {
 
   return (
     <main className={`${styles.galleryBackground} min-h-screen text-white`}>
-      <section className="mx-auto flex w-full max-w-[1500px] gap-6 px-4 py-5 pb-24 sm:px-6 lg:px-10 lg:pb-5">
-        <aside className="sticky top-5 hidden h-[calc(100vh-2.5rem)] w-[270px] shrink-0 rounded-lg border border-white/10 bg-white/4 p-4 backdrop-blur-md lg:flex lg:flex-col">
+      <section className="mx-auto flex w-full max-w-375 gap-6 px-4 py-5 pb-24 sm:px-6 lg:px-10 lg:pb-5">
+        <aside className="sticky top-5 hidden h-[calc(100vh-2.5rem)] w-67.5 shrink-0 rounded-lg border border-white/10 bg-white/4 p-4 backdrop-blur-md lg:flex lg:flex-col">
           <div className="mb-4 border-b border-white/10 pb-3">
             <p className="bounded-font text-sm uppercase tracking-[0.18em] text-white/75">Work Index</p>
             <p className="mt-2 text-xs uppercase tracking-[0.12em] text-white/45">9 Category Items</p>
@@ -164,7 +164,7 @@ const WorkGallery = () => {
             </div>
           </header>
 
-          <div className="relative h-[calc(100vh-14.5rem)] overflow-hidden border border-white/8 bg-white/[0.02] p-3 md:hidden">
+          <div className="relative h-[calc(100vh-14.5rem)] overflow-hidden border border-white/8 bg-white/2 p-3 md:hidden">
             <MotionDiv
               animate={{ y: ['0%', '-50%'] }}
               transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
@@ -182,7 +182,7 @@ const WorkGallery = () => {
               const duration = 20 + columnIndex * 4
 
               return (
-                <div key={`column-${columnIndex}`} className="relative overflow-hidden border border-white/8 bg-white/[0.02] p-3">
+                <div key={`column-${columnIndex}`} className="relative overflow-hidden border border-white/8 bg-white/2 p-3">
                   <MotionDiv
                     animate={{ y: ['0%', '-50%'] }}
                     transition={{ duration, repeat: Infinity, ease: 'linear' }}

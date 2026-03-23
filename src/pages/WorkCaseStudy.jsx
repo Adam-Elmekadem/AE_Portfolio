@@ -20,10 +20,10 @@ const WorkCaseStudy = () => {
   return (
     <main className="min-h-screen w-full overflow-y-auto bg-[#d8dde3] pb-24 text-[#171a20] md:h-screen md:overflow-hidden md:pb-0">
       <section className="grid min-h-screen w-full grid-cols-1 border border-[#c2c8cf] bg-[#edf0f3] md:h-full md:grid-cols-8 md:overflow-hidden">
-        <div className="relative border-b border-[#c6ccd3] px-5 py-6 md:col-span-4 md:min-h-[620px] md:border-b-0 md:border-r">
+        <div className="relative border-b border-[#c6ccd3] px-5 py-6 md:col-span-4 md:min-h-155 md:border-b-0 md:border-r">
           <div className="absolute left-3 top-3 h-6 w-6 rounded-full border border-[#8e97a1]" />
 
-          <div className="mt-12 max-w-[320px] sm:mt-16 sm:max-w-[360px]">
+          <div className="mt-12 max-w-80 sm:mt-16 sm:max-w-90">
             <p className="text-[10px] uppercase tracking-[0.14em] text-[#68717a]">Case Study</p>
             <h1 className="bounded-font mt-2 text-[clamp(2.2rem,6vw,4.3rem)] leading-[0.9] text-[#161a20]">
               Work.
@@ -50,12 +50,12 @@ const WorkCaseStudy = () => {
             const imageSrc = project.images[index] ?? project.cover
 
             return (
-              <article key={section.key} className="relative border-b border-l border-[#c6ccd3] bg-[#e8ebef] p-3 last:border-b-0 md:h-[310px]">
+              <article key={section.key} className="relative border-b border-l border-[#c6ccd3] bg-[#e8ebef] p-3 last:border-b-0 md:h-77.5">
                 <div className="absolute right-2 top-2 z-10 bounded-font text-4xl text-[#b4bbc3]">{section.index}</div>
 
                 <div className="mb-2 pr-14 text-[10px] uppercase tracking-[0.12em] text-[#616a75]">{section.label}</div>
 
-                <div className="relative mt-3 h-[138px] overflow-hidden border border-[#ccd1d7] bg-[#d8dce2] sm:h-[160px]">
+                <div className="relative mt-3 h-34.5 overflow-hidden border border-[#ccd1d7] bg-[#d8dce2] sm:h-40">
                   <img src={imageSrc} alt={`${project.title} ${section.label}`} className="h-full w-full object-cover" />
                   <div className={`${styles.imageOverlay} pointer-events-none absolute inset-0`} />
                 </div>

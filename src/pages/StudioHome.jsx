@@ -88,11 +88,11 @@ const StudioHome = () => {
           rightLabel="Start a project"
         />
 
-        <div className="mx-auto mt-2 max-w-[720px] text-center">
+        <div className="mx-auto mt-2 max-w-180 text-center">
           <h1 className="bounded-font text-[clamp(2.2rem,6vw,4.2rem)] uppercase tracking-[0.05em] text-[#17181d]">
             HI, MY NAME IS ADAM ELMEKADEM
           </h1>
-          <p className="mx-auto mt-3 max-w-[660px] text-[12px] leading-relaxed text-[#3a3b40] sm:text-[13px]">
+          <p className="mx-auto mt-3 max-w-165 text-[12px] leading-relaxed text-[#3a3b40] sm:text-[13px]">
             I am a graphic designer, web developer, and stories writer creating visual identities, interactive websites, and narrative-driven digital experiences that connect with people.
           </p>
         </div>
@@ -127,7 +127,7 @@ const StudioHome = () => {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <h2 className="bounded-font text-3xl uppercase tracking-[0.06em] text-white sm:text-4xl">Techs</h2>
-              <p className={`${styles.techLead} mt-2 max-w-[420px] text-[12px] leading-relaxed sm:text-[13px]`}>
+              <p className={`${styles.techLead} mt-2 max-w-105 text-[12px] leading-relaxed sm:text-[13px]`}>
                 A hybrid toolkit for design, development, and storytelling, from frontend architecture to visual direction and editorial craft.
               </p>
             </div>

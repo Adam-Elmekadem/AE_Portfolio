@@ -29,18 +29,22 @@ export default function FontDetail() {
 
   useEffect(() => {
     let active = true
+    if (!active) return
 
     const loadFonts = async () => {
       try {
         const data = await fetchGoogleFonts()
-        if (!active) return
-        setFonts(data)
+        if (active) {
+          setFonts(data)
+        }
       } catch (loadError) {
-        if (!active) return
-        setError(loadError.message || 'Failed to load font')
+        if (active) {
+          setError(loadError.message || 'Failed to load font')
+        }
       } finally {
-        if (!active) return
-        setLoading(false)
+        if (active) {
+          setLoading(false)
+        }
       }
     }
 
@@ -62,7 +66,7 @@ export default function FontDetail() {
   if (loading) {
     return (
       <main className="min-h-screen bg-[#0b0d14] text-white">
-        <section className="mx-auto w-full max-w-[980px] px-4 py-10 sm:px-6 lg:px-8">
+        <section className="mx-auto w-full max-w-245 px-4 py-10 sm:px-6 lg:px-8">
           <div className="h-6 w-48 animate-pulse rounded bg-white/10" />
           <div className="mt-8 h-16 w-2/3 animate-pulse rounded bg-white/10" />
           <div className="mt-4 h-6 w-full animate-pulse rounded bg-white/10" />
@@ -84,7 +88,7 @@ export default function FontDetail() {
   if (!font) {
     return (
       <main className="min-h-screen bg-[#0b0d14] text-white">
-        <section className="mx-auto w-full max-w-[980px] px-4 py-20 text-center">
+        <section className="mx-auto w-full max-w-245 px-4 py-20 text-center">
           <h1 className="text-3xl font-bold">Font not found</h1>
           <p className="mt-3 text-white/70">
             {error || 'That font product does not exist.'}
@@ -102,14 +106,14 @@ export default function FontDetail() {
 
   return (
     <main className="min-h-screen bg-[#0b0d14] text-white">
-      <section className="mx-auto w-full max-w-[980px] px-4 py-10 sm:px-6 lg:px-8">
+      <section className="mx-auto w-full max-w-245 px-4 py-10 sm:px-6 lg:px-8">
         {previewFontFace ? <style>{previewFontFace}</style> : null}
         <PageHeader className="text-white" linkClassName="text-white/70" rightLabel="All Work" />
 
         <header className="mt-8 mb-8 border-b border-white/10 pb-6">
           <h5 className="text-xs uppercase tracking-[0.22em] text-white/50">Free Font Detail</h5>
           <h1 className="bounded-font text-5xl uppercase tracking-tight">{font.family}</h1>
-          <p className="mt-3 max-w-[720px] text-lg text-white/80">{font.description}</p>
+          <p className="mt-3 max-w-180 text-lg text-white/80">{font.description}</p>
         </header>
 
         <section className="mb-8 border-b border-white/10 pb-8">
@@ -126,7 +130,7 @@ export default function FontDetail() {
                 className="mt-2 w-full border-b border-white/30 bg-transparent px-0 py-2 text-sm text-white outline-none focus:border-white"
                 placeholder="Type something..."
               />
-              <p className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-tight break-words" style={{ fontFamily: previewFontFamily || font.family, whiteSpace: 'normal' }}>
+              <p className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-tight wrap-break-words" style={{ fontFamily: previewFontFamily || font.family, whiteSpace: 'normal' }}>
                 {previewText || font.sampleText}
               </p>
             </div>
